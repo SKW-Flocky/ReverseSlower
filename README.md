@@ -20,7 +20,7 @@
 
 ## Установка
 
-Скачай готовый `SlowReverse.exe` из раздела Actions (артефакт SlowReverse) или из Releases. Ничего устанавливать не нужно.
+Скачай готовый `SlowReverse.exe` из раздела Actions (артефакт SlowReverse) или из Releases.
 
 ### Сборка самому
 
