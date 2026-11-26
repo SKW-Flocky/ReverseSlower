@@ -126,7 +126,7 @@ class App(tk.Tk):
         self.val_lbl.pack(side="right")
 
         self.speed = tk.DoubleVar(value=0.80)
-        self.scale = tk.Scale(c2, from_=0.20, to=2.00, resolution=0.01, orient="horizontal",
+        self.scale = tk.Scale(c2, from_=0.20, to=2.00, resolution=0.05, orient="horizontal",
                               variable=self.speed, showvalue=0, command=self.on_speed,
                               bg=CARD, troughcolor=CARD2, activebackground=AC_H,
                               highlightthickness=0, bd=0, sliderlength=26, width=16)
