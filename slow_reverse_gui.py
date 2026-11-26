@@ -83,7 +83,7 @@ class FlatButton(tk.Label):
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Slow + Reverse MP3")
+        self.title("Slow + Reverse Audio")
         self.geometry("640x860")
         self.minsize(600, 780)
         self.configure(bg=BG)
@@ -99,7 +99,7 @@ class App(tk.Tk):
         pad = dict(padx=20)
 
         # --- заголовок ---
-        tk.Label(self, text="Slow + Reverse MP3", bg=BG, fg=TX,
+        tk.Label(self, text="Slow + Reverse Audio", bg=BG, fg=TX,
                  font=("Segoe UI", 20, "bold")).pack(anchor="w", pady=(18, 0), **pad)
         tk.Label(self, text="Замедляет трек и разворачивает его задом наперёд",
                  bg=BG, fg=MUT, font=("Segoe UI", 10)).pack(anchor="w", pady=(0, 12), **pad)
@@ -111,7 +111,7 @@ class App(tk.Tk):
         row.pack(fill="x", padx=14, pady=(14, 8))
         tk.Label(row, text="1. Файлы", bg=CARD, fg=TX, font=("Segoe UI", 12, "bold")).pack(side="left")
         FlatButton(row, "Очистить", self.clear).pack(side="right", padx=(8, 0))
-        FlatButton(row, "+ Добавить mp3", self.add_files, primary=True).pack(side="right")
+        FlatButton(row, "+ Добавить аудио", self.add_files, primary=True).pack(side="right")
         self.listbox = tk.Listbox(c1, height=5, bg=CARD2, fg=TX, bd=0, highlightthickness=0,
                                   selectbackground=AC, font=("Segoe UI", 10), activestyle="none")
         self.listbox.pack(fill="x", padx=14, pady=(0, 14))
@@ -155,7 +155,7 @@ class App(tk.Tk):
         self.btn.pack(fill="x", pady=(10, 6), **pad)
         self.bar = ttk.Progressbar(self, style="A.Horizontal.TProgressbar", maximum=100)
         self.bar.pack(fill="x", **pad)
-        self.status = tk.Label(self, text="Добавь mp3 и нажми «Обработать»", bg=BG, fg=MUT,
+        self.status = tk.Label(self, text="Добавь аудио и нажми «Обработать»", bg=BG, fg=MUT,
                                font=("Segoe UI", 9), anchor="w", justify="left")
         self.status.pack(fill="x", pady=(4, 8), **pad)
 
@@ -174,7 +174,7 @@ class App(tk.Tk):
         c3.pack(fill="both", expand=True, pady=(6, 10), **pad)
         tk.Label(c3, text="3. Дальше в Suno", bg=CARD, fg=TX,
                  font=("Segoe UI", 12, "bold")).pack(anchor="w", padx=14, pady=(14, 2))
-        tk.Label(c3, text="Полученный mp3 файл загружаете в Suno, риверсите обратно, и пишите "
+        tk.Label(c3, text="Полученный аудио файл загружаете в Suno, риверсите обратно, и пишите "
                           "в зависимости от выбранного замедления:",
                  bg=CARD, fg=MUT, font=("Segoe UI", 10), wraplength=560, justify="left"
                  ).pack(anchor="w", padx=14)
@@ -209,7 +209,7 @@ class App(tk.Tk):
         self.set_status("Промпт скопирован")
 
     def add_files(self):
-        for f in filedialog.askopenfilenames(filetypes=[("MP3", "*.mp3")]):
+        for f in filedialog.askopenfilenames(filetypes=[("Аудио", "*.mp3 *.wav *m4a *.ogg")]):
             if f not in self.files:
                 self.files.append(f)
                 self.listbox.insert("end", os.path.basename(f))
@@ -226,7 +226,7 @@ class App(tk.Tk):
         if not self.btn.enabled:
             return
         if not self.files:
-            messagebox.showinfo("Нет файлов", "Сначала добавь mp3")
+            messagebox.showinfo("Нет файлов", "Сначала добавь аудио")
             return
         self.btn.set_enabled(False)
         self.bar["value"] = 0
